@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  nginx-modsec:
+    container_name: modsecurity-nginx
+    image: owasp/modsecurity-crs:3-nginx
+    ports:
+      - "80:80"
+    volumes:
+     - ./nginx-modsecurity/nginx.conf:/etc/nginx/templates/nginx.conf.template:rw
+  
+  dvwa:
+    container_name: dvwa
+    image: vulnerables/web-dvwa
